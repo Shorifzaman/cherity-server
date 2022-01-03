@@ -5,10 +5,10 @@ It is a single page application made with ReactJS
 
 ## client of this website :
 
-- [Live Site Link](https://github.com/Shorifzaman/cherity-client)
+- [client Site Link](https://github.com/Shorifzaman/cherity-client)
 ## Server of this website :
 
-- [Live Site Link](https://github.com/Shorifzaman/cherity-server)
+- [server Site Link](https://github.com/Shorifzaman/cherity-server)
 ## Live Demo of this website :
 
 - [Live Site Link](https://cherity-ukbd.web.app/)
