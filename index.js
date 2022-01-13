@@ -18,9 +18,9 @@ client.connect(err => {
     // const testimonialCollection = database.collection("testimonials");
     // const usersCollection = database.collection('users');
 
+    // https://cryptic-everglades-35803.herokuapp.com/services
 
-
-    // service api
+    // Add serviceCases api
     const donateCollection = client.db("cherity").collection("donatecauses");
     app.post('/addService', (req, res) => {
         donateCollection.insertOne(req.body)
@@ -28,18 +28,28 @@ client.connect(err => {
                 res.send(result.insertedCount > 0)
             })
     })
+//GET Dynamic (All-service)
     app.get('/services', (req, res) => {
         donateCollection.find({})
             .toArray((error, documents) => {
                 res.send(documents)
             })
     })
+    //GET Dynamic (singleservice id)
+app.get('/service/:id', async (req, res) => {
+    const id = req.params.id;
+    const query = { _id: ObjectId(id) };
+    const result = await donateCollection.findOne(query);
+    res.send(result);
+})
+//delete Dynamic (singleservice)
     app.delete('/delete/:id', (req, res) => {
         donateCollection.findOneAndDelete({ _id: ObjectId(req.params.id) })
             .then(response => {
                 res.send(response.ok > 0);
             })
     })
+//GET Dynamic (singleservice-title)
     app.get('/service/:title', (req, res) => {
         donateCollection.find({ title: req.params.title })
             .toArray((error, documents) => {
